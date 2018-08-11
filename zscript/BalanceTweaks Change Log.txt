@@ -1,0 +1,34 @@
+Balance Changes V1
+
+BioRifle:
+-Increased max size of blobs.
+-Reduced minimum damage for 40~ (2 Hit kill an imp) but fully charged will
+kill Hellknights and Mancubus.
+-Reduced the amount of blobs created by scale.x to compensate bigger size.
+-Made the altfire charge start with 1, reduced charge rate slightly
+to compensate.
+
+Flak Cannon:
+-Increased primary damage by 10.
+-Made damage fall off over time. (Pretty big falloff)
+-Reduced smoke created by half.
+-Increased secondary damage by 20.
+-Increased fire arc.
+
+Impact Hammer:
+-Made both modes do increased knockback.
+
+Minigun:
+-Increased Primary fire rate.
+-Increased Secondary Fire rate ALOT.
+-Idea is to make the weapon an ammo guzzler, lots of death
+for high DPS. And... to make it relevant against the utter
+OPness of the double Enforcer.
+
+PulseGun:
+-Increased Primary Fire Damage.
+-Doubled Primary fire ammo consumption (Based on 2004's link gun)
+-Increased alt fire damage slightly.
+
+Ripper:
+-Small damage increase on both sides.

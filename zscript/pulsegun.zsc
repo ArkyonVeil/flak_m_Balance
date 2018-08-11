@@ -182,7 +182,7 @@ Class PulseBall : Actor
 		Obituary "%o ate %k's burning plasma death.";
 		DamageType 'Pulsed';
 		RenderStyle "Add";
-		DamageFunction Random[Pulse](20,30);
+		DamageFunction Random[Pulse](30,35);
 		PROJECTILE;
 		+EXPLODEONWATER;
 		+SKYEXPLODE;
@@ -401,7 +401,7 @@ Class PulseBolt : Actor
 				}
 				lasthit = level.time;
 				damagedactor = t.Results.HitActor;
-				accdamage += 1./TICRATE;
+				accdamage += 1.25/TICRATE;
 				if ( accdamage > 0.16 )
 				{
 					t.Results.HitActor.DamageMobj(self,target,int(Random[Pulse](70,80)*accdamage),'zapped',DMG_USEANGLE,atan2(x.y,x.x));
@@ -631,9 +631,9 @@ Class PulseGun : UTWeapon
 	{
 		Weapon weap = Weapon(invoker);
 		if ( !weap ) return;
-		if ( weap.Ammo1.Amount <= 0 ) return;
+		if ( weap.Ammo1.Amount <= 1 ) return;
 		if ( !weap.DepleteAmmo(weap.bAltFire,true,1) ) return;
-		invoker.clipcount--;
+		invoker.clipcount-=2;
 		if ( !CVar.GetCVar('flak_pulsereload').GetBool() && (invoker.clipcount <=0) ) invoker.clipcount = (weap.Ammo1.Amount>0)?Min(50,weap.Ammo1.Amount):50;
 		invoker.FireEffect();
 		UTMainHandler.DoFlash(self,Color(32,128,255,128),1);
@@ -711,7 +711,7 @@ Class PulseGun : UTWeapon
 		Weapon.SlotNumber 5;
 		Weapon.SelectionOrder 5;
 		Weapon.AmmoType "PulseAmmo";
-		Weapon.AmmoUse 1;
+		Weapon.AmmoUse 2;
 		Weapon.AmmoType2 "PulseAmmo";
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive 60;

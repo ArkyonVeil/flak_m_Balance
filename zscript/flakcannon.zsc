@@ -140,7 +140,11 @@ Class FlakChunk : Actor
 		Radius 2;
 		Height 2;
 		Speed 50;
-		DamageFunction Random[Flak](25,35);
+		DamageFunction Random[Flak](35,45);
+		//KEL:After a few tweaks, the initial damage output per chunk
+		//while generous. Has EXTREME falloff, in an attempt to make other
+		//weapons feel needed.
+		
 		DamageType 'Shredded';
 		BounceType "Doom";
 		BounceFactor 0.8;
@@ -184,12 +188,12 @@ Class FlakChunk : Actor
 		}
 		lifetics++;
 		if ( lifetics > 3 )
-		{
+		{			
 			lifetics = 0;
 			if ( frame < 11 ) frame++;
 		}
 		lifetime += lifespeed;
-		if ( (waterlevel <= 0) && (frame < 10) )
+		if ( (waterlevel <= 0) && (frame < 10) && frame%2==0)
 		{
 			let s = Spawn("UTSmoke",pos);
 			s.vel = (FRandom[Flak](-0.1,0.1),FRandom[Flak](-0.1,0.1),FRandom[Flak](-0.1,0.1));
@@ -212,7 +216,7 @@ Class FlakChunk : Actor
 	{
 		invoker.hasbounced = true;
 		A_SprayDecal("WallCrack",-8);
-		int numpt = Random[Flak](3,6);
+		int numpt = Random[Flak](2,3);
 		if ( frame < 10 )
 		{
 			for ( int i=0; i<numpt; i++ )
@@ -240,6 +244,11 @@ Class FlakChunk : Actor
 			A_AlertMonsters();
 		}
 		lasthit = target;
+		//KEL:Tweaked the damage so it would be reduced over time very quickly.
+		//Doing 500~ Damage at face value, but after like 8 meters it does a minimum
+		//of 5 damage.
+		damage -= max(0,frame*30);
+		damage = max(damage,5);
 		return damage;
 	}
 	States
@@ -312,11 +321,13 @@ Class SlugSmoke : Actor
 		Super.Tick();
 		if ( globalfreeze || level.frozen ) return;
 		lifetime += lifespeed;
+		int numpt = Random[Flak](18,20);
 		let s = Spawn("UTSmoke",pos);
 		s.vel = (FRandom[Flak](-0.5,0.5),FRandom[Flak](-0.5,0.5),FRandom[Flak](-0.5,0.5));
 		s.vel.z += 2.;
 		s.alpha = scale.x;
 		s.SetShade("AAAAAA");
+		
 		scale.x = max(0,1-lifetime);
 		if ( scale.x <= 0 ) Destroy();
 	}
@@ -359,7 +370,8 @@ Class FlakSlug : Actor
 	{
 		Obituary "%o was ripped to shreds by %k's Flak Cannon.";
 		DamageType 'FlakDeath';
-		DamageFunction Random[Flak](80,90);
+		//KEL:Small Damage Tweak
+		DamageFunction Random[Flak](90,110);
 		Radius 2;
 		Height 2;
 		Speed 40;
@@ -408,7 +420,7 @@ Class FlakSlug : Actor
 			p.vel = (cos(p.angle)*cos(p.pitch),sin(p.angle)*cos(p.pitch),-sin(p.pitch))*p.speed*FRandom[Flak](0.5,1.5);
 			p.target = target;
 		}
-		int numpt = Random[Flak](10,20);
+		int numpt = Random[Flak](1,2);
 		for ( int i=0; i<numpt; i++ )
 		{
 			Vector3 pvel = (FRandom[Flak](-1,1),FRandom[Flak](-1,1),FRandom[Flak](-1,1)).unit()*FRandom[Flak](2,8);
@@ -488,7 +500,7 @@ Class FlakCannon : UTWeapon
 		Vector3 x, y, z;
 		double a, s;
 		[x, y, z] = Matrix4.GetAxes(pitch,angle,roll);
-		Vector3 origin = (pos.x,pos.y,player.viewz)+10.0*x+2.0*y-3.0*z;
+		Vector3 origin = (pos.x,pos.y,player.viewz)+10.0*x+4.0*y-3.0*z;
 		A_Overlay(-2,"MuzzleFlash");
 		A_OverlayFlags(-2,PSPF_RENDERSTYLE|PSPF_FORCESTYLE,true);
 		A_OverlayRenderstyle(-2,STYLE_Add);

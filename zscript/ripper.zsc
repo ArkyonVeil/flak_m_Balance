@@ -58,7 +58,8 @@ Class Razor2 : Actor
 		Radius 2;
 		Height 2;
 		Speed 40;	// should be 26 but it looks way too slow
-		DamageFunction Random[Ripper](30,40);
+		//KEL: 10+ Damage increase. Slightly more effective.
+		DamageFunction Random[Ripper](40,50);
 		DamageType 'Ripper';
 		Obituary "%k ripped a chunk of meat out of %o with the Ripper.";
 		BounceType "Doom";
@@ -183,7 +184,8 @@ Class Razor2Alt : Razor2
 {
 	Default
 	{
-		DamageFunction Random[Ripper](40,60);
+	//KEL: Small 5 Damage increase
+		DamageFunction Random[Ripper](45,65);
 		DamageType 'RipperAltDealth';
 		BounceType "None";
 		ProjectileKickback 350;

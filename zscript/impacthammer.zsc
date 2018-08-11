@@ -77,7 +77,9 @@ Class ImpactHammer : UTWeapon replaces Fist
 		{
 			int dmg = int(Random[Impact](90,120)*realcharge);
 			dmg = d.HitActor.DamageMobj(invoker,self,dmg,'impact',DMG_THRUSTLESS);
-			d.HitActor.vel = x*(2000/d.HitActor.mass)*realcharge;
+			d.HitActor.vel = x*(2000/d.HitActor.mass)*realcharge*4;
+			//KEL: Impact hammer is quite the punch. Push em' back!
+			//But not too hard. After all, you want them in pieces.
 			if ( d.HitActor.bNOBLOOD )
 			{
 				let p = Spawn("HammerImpact",d.HitLocation-d.HitDir*4);
@@ -139,7 +141,8 @@ Class ImpactHammer : UTWeapon replaces Fist
 		{
 			int dmg = int(Random[Impact](25,35)*dscale);
 			dmg = d.HitActor.DamageMobj(invoker,self,dmg,'impact',DMG_THRUSTLESS);
-			d.HitActor.vel = x*(900/d.HitActor.mass)*dscale;
+			d.HitActor.vel = x*(900/d.HitActor.mass)*dscale*20;
+			//KEL:Just push em'
 		}
 		else if ( d.HitType != TRACE_HitNone )
 		{
