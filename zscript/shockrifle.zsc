@@ -337,7 +337,7 @@ Class ShockBeam : Actor
 				if ( target ) target.TakeInventory('ShockAmmo',2);
 				let b = t.Results.HitActor.target;
 				b.ExplodeMissile(null,self);
-				b.A_Explode(Random[ASMD](150,160),300);
+				b.A_Explode(Random[ASMD](180,200),300);
 				b.A_QuakeEx(6,6,6,60,0,1200,"",QF_RELATIVE|QF_SCALEDOWN,rollIntensity:0.2);
 				b.A_SprayDecal("BigShockMark1",100);
 				b.A_SprayDecal("BigShockMark2",100);
