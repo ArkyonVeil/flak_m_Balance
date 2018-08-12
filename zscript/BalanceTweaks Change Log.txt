@@ -1,4 +1,4 @@
-Balance Changes V1
+Balance Changes V1 (Seperate Build)
 
 BioRifle:
 -Increased max size of blobs.
@@ -32,3 +32,43 @@ PulseGun:
 
 Ripper:
 -Small damage increase on both sides.
+
+#######
+
+Balance Changes V2
+Note: These are differences from the main build.
+
+Flak Cannon:
+-Primary now does around 300 damage at point blank.
+-Made damage fall off over time. (Pretty big falloff)
+-Reduced smoke created by half.
+-Made secondary deal 290~ damage on average (1 Hit kill a revenant/2 Hit kill a cacodemon)
+-Increased fire arc.
+
+Minigun:
+-Increased Primary fire rate by less, now averaging at 170~ DPS.
+-Increased Secondary Fire rate a bit. Averaging now at 210~ DPS.
+-Both these changes are made to make the weapon a notable choice from the double enforcer.
+
+PulseGun:
+-Reverted Damage changes from V1.
+-Increased alt fire damage slightly. (1.5~ damage increase)
+
+Ripper: (Unchanged from V1)
+-Small damage increase on both sides.
+
+Shock Rifle:
+-Increased Shock Rifle combo damage to 260 in an attempt
+to make the weapon more relevant against Pinkies and slightly heavier monsters.
+Still a very high risk attack.
+
+BioRifle: (Unchanged from V1)
+-Increased max size of blobs.
+-Reduced minimum damage for 40~ (2 Hit kill an imp) but fully charged will
+kill Hellknights and Mancubus.
+-Reduced the amount of blobs created by scale.x to compensate bigger size.
+-Made the altfire charge start with 1, reduced charge rate slightly
+to compensate.
+
+Impact Hammer: (Unchanged from V1)
+-Made both modes do increased knockback.

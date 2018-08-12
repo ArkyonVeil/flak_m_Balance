@@ -140,7 +140,7 @@ Class FlakChunk : Actor
 		Radius 2;
 		Height 2;
 		Speed 50;
-		DamageFunction Random[Flak](35,45);
+		DamageFunction Random[Flak](30,35);
 		//KEL:After a few tweaks, the initial damage output per chunk
 		//while generous. Has EXTREME falloff, in an attempt to make other
 		//weapons feel needed.
@@ -247,7 +247,7 @@ Class FlakChunk : Actor
 		//KEL:Tweaked the damage so it would be reduced over time very quickly.
 		//Doing 500~ Damage at face value, but after like 8 meters it does a minimum
 		//of 5 damage.
-		damage -= max(0,frame*30);
+		damage -= max(0,frame*15);
 		damage = max(damage,5);
 		return damage;
 	}
@@ -370,8 +370,8 @@ Class FlakSlug : Actor
 	{
 		Obituary "%o was ripped to shreds by %k's Flak Cannon.";
 		DamageType 'FlakDeath';
-		//KEL:Small Damage Tweak
-		DamageFunction Random[Flak](90,110);
+		//KEL:Decent Damage Tweak
+		DamageFunction Random[Flak](10,15);
 		Radius 2;
 		Height 2;
 		Speed 40;
@@ -399,7 +399,7 @@ Class FlakSlug : Actor
 		A_SprayDecal("RocketBlast",150);
 		A_NoGravity();
 		A_SetScale(1.2);
-		A_Explode(Random[Flak](70,80),80);
+		A_Explode(Random[Flak](15,20),75);//Nerfed
 		A_QuakeEx(4,4,4,8,0,200,"",QF_RELATIVE|QF_SCALEDOWN,rollIntensity:0.2);
 		A_PlaySound("flak/explode",CHAN_VOICE);
 		A_AlertMonsters();

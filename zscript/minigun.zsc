@@ -102,12 +102,8 @@ Class Minigun : UTWeapon
 		A_Overlay(-2,"MuzzleFlash",true);
 		A_OverlayFlags(-2,PSPF_RENDERSTYLE|PSPF_FORCESTYLE,true);
 		A_OverlayRenderstyle(-2,STYLE_Add);
-		//KEL: Tweaked the invoker's timer to grant the Minigun 3* the firing speed. 
-		//The game needs a heavy DPS option late game, 
-		//and the Minigun was initially WEAKER than double enforcer. 
-		//So now it has 300~ DPS alt fire, which feels about right given its job prescription
-		//And... this gives a use to the Enforcer ammo that accumulates late game.
-		if ( (alt && (invoker.bcnt++ < 0)) || (invoker.bcnt++ < 2) ) return;
+		//KEL: Tweaked the invoker's timer to grant the Minigu
+		if ( (alt && (invoker.bcnt++ < 1)) || (invoker.bcnt++ < 3) ) return;
 		invoker.bcnt = 0;
 		if ( !weap.DepleteAmmo(weap.bAltFire,true,1) ) return;
 		invoker.FireEffect();

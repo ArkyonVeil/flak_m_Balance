@@ -182,7 +182,7 @@ Class PulseBall : Actor
 		Obituary "%o ate %k's burning plasma death.";
 		DamageType 'Pulsed';
 		RenderStyle "Add";
-		DamageFunction Random[Pulse](30,35);
+		DamageFunction Random[Pulse](25,30);
 		PROJECTILE;
 		+EXPLODEONWATER;
 		+SKYEXPLODE;
@@ -711,7 +711,7 @@ Class PulseGun : UTWeapon
 		Weapon.SlotNumber 5;
 		Weapon.SelectionOrder 5;
 		Weapon.AmmoType "PulseAmmo";
-		Weapon.AmmoUse 2;
+		Weapon.AmmoUse 1;
 		Weapon.AmmoType2 "PulseAmmo";
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive 60;
